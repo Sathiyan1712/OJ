@@ -1,0 +1,5 @@
+Compilation Error:
+D:\projects\OJ\code\835a937b-de5f-4f1a-ace8-baed22f2e01e.cpp:1:1: error: 'cxzdcx' does not name a type
+ cxzdcx
+
+ ^~~~~~

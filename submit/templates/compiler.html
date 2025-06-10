@@ -1,0 +1,90 @@
+{% extends base_template %}
+{% block content %}
+<div style="
+    max-width: 700px;
+    margin: 40px auto;
+    background: #fafafa;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px #eee;
+    padding: 36px 32px 28px 32px;
+">
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        <h2 style="color:#be4d4d; text-align:center; margin-bottom:28px;">
+            {{ problem.title }}
+        </h2>
+        {{ form.as_p }}
+
+        <div style="display:flex; gap:18px; margin-top:18px;">
+            <button type="submit" name="action" value="run" style="
+                background:#be4d4d;
+                color:#fff;
+                padding:10px 28px;
+                border:none;
+                border-radius:6px;
+                font-weight:600;
+                font-size:1em;
+                cursor:pointer;
+                transition:background 0.2s;
+                box-shadow:0 1px 4px #e5b2b2;
+            "
+            onmouseover="this.style.background='#a63a3a'"
+            onmouseout="this.style.background='#be4d4d'">
+                Run Code
+            </button>
+            {% if problem %}
+            <button type="submit" name="action" value="submit" style="
+                background:#23272e;
+                color:#fff;
+                padding:10px 28px;
+                border:none;
+                border-radius:6px;
+                font-weight:600;
+                font-size:1em;
+                cursor:pointer;
+                transition:background 0.2s;
+                box-shadow:0 1px 4px #e5b2b2;
+            "
+            onmouseover="this.style.background='#444'"
+            onmouseout="this.style.background='#23272e'">
+                Submit Code
+            </button>
+            {% endif %}
+        </div>
+
+        {% if message %}
+            <hr style="margin:32px 0 18px 0;">
+            <h2 style="color:#be4d4d;">Submission Result</h2>
+            <p><strong>Result:</strong></p>
+            {% if 'correct' in message or 'Correct' in message %}
+                <span style="color: green;">
+            {% else %}
+                <span style="color: red;">
+            {% endif %}
+                {{ message|safe }}
+            </span>
+        {% endif %}
+
+        {% if show_ai_review and submission_.id %}
+            <hr style="margin:32px 0 18px 0;">
+            <div style="text-align:center;">
+                <a href="{% url 'ai_review_code' submission_.id %}" style="
+                    background:#be4d4d;
+                    color:#fff;
+                    padding:10px 28px;
+                    border-radius:6px;
+                    text-decoration:none;
+                    font-weight:600;
+                    font-size:1em;
+                    box-shadow:0 1px 4px #e5b2b2;
+                    transition:background 0.2s;
+                "
+                onmouseover="this.style.background='#a63a3a'"
+                onmouseout="this.style.background='#be4d4d'">
+                    AI Review My Code
+                </a>
+            </div>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

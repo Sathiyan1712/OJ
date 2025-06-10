@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HOME PAGE</title>
+    <style>
+      body {
+        background-color: aquamarine;
+        
+      }
+      #container{
+        background-color: bisque ;
+        display: block;
+        height: fit-content;
+        position: absolute;
+        left: 25%;
+        right: 25%;
+        top: 25%;
+        padding: 4rem;
+        border-radius: 50%;
+        text-align: center;
+        align-items: center;
+      }
+      .action{
+       
+       display: flex;
+       gap: 1rem;
+       justify-content: center;
+       margin-top: 20px;
+     }
+     
+     .button {
+       padding: 12px 24px;
+       background-color: #007BFF;
+       color: white;
+       text-decoration: none;
+       font-weight: bold;
+       border-radius: 8px;
+       transition: background-color 0.3s, transform 0.2s;
+     }
+
+     .button:hover {
+       background-color: #13191f;
+       transform: scale(1.05);
+     }
+
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h2>WELCOME TO OJ</h2>
+      <h3>What You Want To Do?</h3>
+      <div class="action">
+        <a href="{%url 'regis'%}" class="button">Register</a>
+        <a href="{%url 'login'%}" class="button">Login</a>
+      </div>
+    </div>
+    
+  </body>
+</html>
+<!-- #?action=login -->

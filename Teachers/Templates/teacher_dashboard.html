@@ -1,0 +1,18 @@
+
+    
+    
+    
+{% extends "base.html" %}
+{% block content %}
+    <div style="text-align:center;">
+        <!-- <img src="https://img.icons8.com/ios-filled/100/000000/teacher.png" alt="Teacher Icon" style="margin-bottom: 18px; opacity: 0.8;"> -->
+        <h2 style="color:#be4d4d; font-size:2.2rem; margin-bottom:10px;">Welcome, Teacher!</h2>
+        <p style="font-size:1.15rem; color:#555; margin-bottom:30px;">
+            Manage your problems, add new ones, and help students learn better.
+        </p>
+        <div style="display:flex; justify-content:center; gap:22px; flex-wrap:wrap;">
+            <a href="{% url 'problems' %}" style="background:#be4d4d; color:#fff; padding:14px 32px; border-radius:6px; font-weight:bold; text-decoration:none; box-shadow:0 2px 8px rgba(190,77,77,0.11); transition:background 0.2s;">View Problems</a>
+            <a href="{% url 'add_problem' %}" style="background:#fff; color:#be4d4d; border:2px solid #be4d4d; padding:14px 32px; border-radius:6px; font-weight:bold; text-decoration:none; transition:background 0.2s, color 0.2s;">Add Problem</a>
+        </div>
+    </div>
+{% endblock %}

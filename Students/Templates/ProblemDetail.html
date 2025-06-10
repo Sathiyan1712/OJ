@@ -1,0 +1,46 @@
+
+
+{% extends "base1.html" %}
+{% block content %}
+<div style="
+    max-width: 700px;
+    margin: 40px auto;
+    background: #fafafa;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px #eee;
+    padding: 36px 32px 28px 32px;
+">
+    <h2 style="color:#222; margin-bottom:18px;">{{ problem.title }}</h2>
+    <div style="margin-bottom:18px;">
+        <p><strong>Description:</strong><br>
+            <span style="color:#444;">{{ problem.description }}</span>
+        </p>
+        <p><strong>Input:</strong><br>
+            <span style="color:#444;">{{ problem.input_description }}</span>
+        </p>
+        <p><strong>Output:</strong><br>
+            <span style="color:#444;">{{ problem.output_description }}</span>
+        </p>
+        <p><strong>Example:</strong><br>
+            <span style="color:#444;">{{ problem.example }}</span>
+        </p>
+    </div>
+    <div style="text-align:right; margin-top:36px;">
+        <a href="{% url 'code submit' problem.pk %}" style="
+            background:#be4d4d;
+            color:#fff;
+            padding:12px 32px;
+            border-radius:6px;
+            text-decoration:none;
+            font-weight:600;
+            font-size:1.08em;
+            box-shadow:0 1px 4px #e5b2b2;
+            transition:background 0.2s;
+        "
+        onmouseover="this.style.background='#a63a3a'"
+        onmouseout="this.style.background='#be4d4d'">
+            Solve
+        </a>
+    </div>
+</div>
+{% endblock %}

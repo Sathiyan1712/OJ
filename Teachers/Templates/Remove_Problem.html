@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="
+    max-width: 500px;
+    margin: 40px auto;
+    background: #fafafa;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px #eee;
+    padding: 36px 32px 28px 32px;
+">
+    <h2 style="color:#be4d4d; text-align:center; margin-bottom:26px;">Remove Problem</h2>
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        <label for="problem_iud" style="font-weight:600; color:#444; margin-bottom:12px; display:block;">
+            Select Problem to Remove
+        </label>
+        <select name="problem_iud" id="problem_iud" required style="
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin-bottom: 28px;
+            font-size: 1em;
+            background: #fff;
+            color: #333;
+            box-sizing: border-box;
+        ">
+            {% for problem in problems %}
+                <option value="{{ problem.id }}">{{ problem.title }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" style="
+            display: block;
+            width: 100%;
+            background: #be4d4d;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.08em;
+            padding: 13px 0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 1px 4px #e5b2b2;
+            letter-spacing: 1px;
+        "
+        onmouseover="this.style.background='#a63a3a'"
+        onmouseout="this.style.background='#be4d4d'">
+            Remove
+        </button>
+    </form>
+</div>
+{% endblock %}

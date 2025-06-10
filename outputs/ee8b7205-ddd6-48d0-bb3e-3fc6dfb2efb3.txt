@@ -1,0 +1,4 @@
+Compilation Error:
+D:\projects\OJ\code\ee8b7205-ddd6-48d0-bb3e-3fc6dfb2efb3.cpp:1:1: error: 'ccaxxcsz' does not name a type
+ ccaxxcsz
+ ^~~~~~~~

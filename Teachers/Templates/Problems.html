@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2 style="color:#be4d4d; text-align:center; margin-bottom:32px;">Problems</h2>
+    <ul style="list-style:none; padding:0; max-width:600px; margin:30px auto;">
+        {% for problem in problems %}
+            <li style="
+                 background:#f9f9f9;
+                 margin-bottom:16px;
+                 padding:18px 16px;
+                 border-radius:8px;
+                 box-shadow:0 1px 4px #eee;
+                 display:flex;
+                 align-items:center;
+                 gap:12px;
+            ">
+                <span style="font-weight:600; color:#be4d4d; font-size:1.08em;">
+                    <a href="{% url 'problem_detail' problem.pk %}" style="color:#be4d4d; text-decoration:none; flex:1;">
+                        {{ problem.title }}
+                    </a>
+                </span>
+                {% if problem.is_solved %}
+                    <span style="margin-left:18px; color:rgb(31, 228, 47); font-weight:500;">
+                        Solved
+                    </span>
+                    <a href="{% url 'Tproblem_submissions' problem.id %}" style="
+                        margin-left:auto;
+                        background:#be4d4d;
+                        color:#fff;
+                        padding:7px 20px;
+                        border-radius:6px;
+                        text-decoration:none;
+                        font-size:1em;
+                        font-weight:500;
+                        box-shadow:0 1px 4px #e5b2b2;
+                        transition:background 0.2s;
+                    ">
+                        View My Submissions
+                    </a>
+                {% else %}
+                    <span style="color:#c62828; font-weight:500;">
+                        Unsolved
+                    </span>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li style="text-align:center; color:#888;">No problems found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Teacher</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #f6f8fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 60px auto;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(190,77,77,0.09);
+            padding: 36px 28px 28px 28px;
+        }
+        h2 {
+            color: #be4d4d;
+            text-align: center;
+            margin-bottom: 26px;
+        }
+        label {
+            font-weight: 500;
+            color: #444;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1em;
+            background: #fafafa;
+        }
+        button {
+            width: 100%;
+            background: #be4d4d;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.08em;
+            padding: 12px 0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 1px 4px #e5b2b2;
+            letter-spacing: 1px;
+        }
+        button:hover {
+            background: #a63a3a;
+        }
+        .msg {
+            color: red;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+        p {
+            text-align: center;
+        }
+        a {
+            color: #be4d4d;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <p class="msg">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+
+            <label for="user_type">Register as:</label>
+            <select name="user_type" required>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+            </select>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+    </div>
+</body>
+</html>

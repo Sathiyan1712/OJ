@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chose the option</title>
+</head>
+<body>
+    <h2>{{action | capfirst}} as: </h2>
+    {% if action == 'register1' %}
+   
+    <a href="{%url 'regis-teach'%}" class="button">Teacher</a>
+    <a href="{%url 'regis-stud'%}" class="button">Student</a>
+    {%elif action == 'login1'%}
+    <a href="{%url 'login-teach'%}" class="button">Teacher</a>
+    <a href="{%url 'login-stud'%}" class="button">Student</a>
+    {%endif%}
+
+
+</body>
+</html>

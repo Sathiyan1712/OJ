@@ -1,0 +1,4 @@
+Compilation Error:
+D:\projects\OJ\code\f39106dd-f12c-4ce0-b170-3ae2b945e419.cpp:1:1: error: 'gesv' does not name a type
+ gesv
+ ^~~~
