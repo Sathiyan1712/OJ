@@ -47,7 +47,6 @@ An interactive platform for educators and students to create, manage, and solve 
 |------------|----------------------------------|
 | Language   | Python                          |
 | Framework  | Django                          |
-| Database   |                                 |
 | Frontend   | HTML, CSS                       |
 | Judge Engine | Python subprocess             |
 | Authentication | Django's built-in auth system |
