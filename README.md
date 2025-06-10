@@ -20,3 +20,35 @@ An interactive platform for educators and students to create, manage, and solve 
 - **Progress Tracking**: View submission history and results
 
 
+##  High-Level Architecture
+
+
+- **Frontend**: Django templates with HTML/CSS/Bootstrap (or React)
+- **Backend**: Django Views, Models, and Forms
+
+
+---
+
+##  Core Modules
+
+| Module             | Description                                                                 |
+|--------------------|-----------------------------------------------------------------------------|
+| Authentication     | User registration, login, and role-based access (Student, Teacher)          |
+| Problem Management | Teachers can add, edit, or delete problems with test cases                  |
+| Code Submission    | Students can submit code for problems and get real-time verdicts            |
+| Results Feedback   | Verdict: "Correct", "Wrong Answer", "Runtime Error", etc.                   |
+
+
+
+
+##  Tech Stack
+
+| Layer      | Technology                      |
+|------------|----------------------------------|
+| Language   | Python                          |
+| Framework  | Django                          |
+| Database   |                                 |
+| Frontend   | HTML, CSS                       |
+| Judge Engine | Python subprocess             |
+| Authentication | Django's built-in auth system |
+
