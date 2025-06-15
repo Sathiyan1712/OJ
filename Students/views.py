@@ -46,7 +46,7 @@ def Student_Problem(request):
 @user_passes_test(is_student)
 def ProblemDetail(request, pk):
     problem = get_object_or_404(Problem, pk = pk)
-    return render(request, 'Problemdetail.html', {'problem':problem})
+    return render(request, 'ProblemDetail.html', {'problem':problem})
 
 
 #problem submission

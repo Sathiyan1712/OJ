@@ -1,0 +1,43 @@
+{% extends 'base1.html' %}
+{% block content %}
+<h2 style="color:#be4d4d; text-align:center; margin-bottom:28px;">Problem List</h2>
+<ul style="list-style:none; padding:0; max-width:600px; margin:30px auto;">
+    {% for problem in problems %}
+    <li style="
+        background:#f9f9f9;
+        margin-bottom:16px;
+        padding:18px 16px;
+        border-radius:8px;
+        box-shadow:0 1px 4px #eee;
+        display:flex;
+        align-items:center;
+        gap:12px;
+    ">
+        <a href="{% url 'prob det' problem.pk %}" style="font-weight:bold; color:#be4d4d; text-decoration:none; flex:1;">
+            {{ problem.title }}
+        </a>
+        {% if problem.is_solved %}
+            <span style="color:rgb(31, 228, 47); font-weight:500; margin-right:10px;">Solved</span>
+            <a href="{% url 'problem_submissions' problem.id %}" style="
+                background:#be4d4d;
+                color:#fff;
+                padding:6px 14px;
+                border-radius:4px;
+                text-decoration:none;
+                font-size:0.95em;
+                font-weight:500;
+                transition:background 0.2s;
+            "
+            onmouseover="this.style.background='#a63a3a'"
+            onmouseout="this.style.background='#be4d4d'">
+                View My Submissions
+            </a>
+        {% else %}
+            <span style="color:#c62828; font-weight:500;">Unsolved</span>
+        {% endif %}
+    </li>
+    {% empty %}
+    <li style="text-align:center; color:#888;">No problems found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

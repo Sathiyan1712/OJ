@@ -1,0 +1,46 @@
+{% extends "base1.html" %}
+{% block content %}
+<div style="
+    max-width: 700px;
+    margin: 40px auto;
+    background: #fafafa;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px #eee;
+    padding: 36px 32px 28px 32px;
+">
+    <h2 style="color:#be4d4d; text-align:center; margin-bottom:24px;">
+        Submitted Code
+    </h2>
+    <div style="margin-bottom:18px;">
+        <p><strong>Language:</strong> <span style="color:#be4d4d;">{{ submission.language }}</span></p>
+        <p><strong>Submitted At:</strong> {{ submission.timestamp }}</p>
+        <p>
+            <strong>Correct:</strong>
+            {% if submission.is_correct %}
+                <span style="color:rgb(31, 228, 47); font-size:1.1em;">✅</span>
+            {% else %}
+                <span style="color:#be4d4d; font-size:1.1em;">❌</span>
+            {% endif %}
+        </p>
+    </div>
+    <h3 style="margin-bottom:10px;">Code:</h3>
+    <pre style="
+        background:#23272e;
+        color:#f8f8f2;
+        padding: 1.2em;
+        border-radius: 8px;
+        font-size: 1.07em;
+        overflow-x: auto;
+        box-shadow: 0 1px 6px #e9e9e9;
+        margin-bottom: 28px;
+    ">{{ submission.code }}</pre>
+    <div style="text-align:center;">
+        <a href="{% url 'problem_submissions' submission.problem.pk %}" style="
+            color:#be4d4d;
+            text-decoration:none;
+            font-weight:600;
+            font-size:1.05em;
+        ">&larr; Back to Submissions</a>
+    </div>
+</div>
+{% endblock %}

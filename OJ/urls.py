@@ -22,7 +22,7 @@ from members.views import logout_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("members/", include("members.urls")),
+    path("", include("members.urls")),
     path("Teachers/", include("Teachers.urls")),
     path("Students/", include("Students.urls")),
     path("submit/", include("submit.urls")),

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #f6f8fa;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background: linear-gradient(90deg, #be4d4d 60%, #d16d6d 100%);
+            padding: 18px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(190,77,77,0.08);
+        }
+        nav a {
+            margin: 0 22px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #fff;
+            font-size: 1.08rem;
+            transition: color 0.2s, border-bottom 0.2s;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+        nav a:hover, nav a:focus {
+            color: #ffe3e3;
+            border-bottom: 2px solid #fff;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(190,77,77,0.09);
+            padding: 40px 30px;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #e5e5e5;
+            margin: 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'Stud home' %}">Home</a>
+        <a href="{% url 'Prob list' %}">Problems</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </nav>
+    <hr>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

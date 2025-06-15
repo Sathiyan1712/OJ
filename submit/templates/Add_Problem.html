@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="
+    max-width: 500px;
+    margin: 40px auto;
+    background: #fafafa;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px #eee;
+    padding: 36px 32px 28px 32px;
+">
+    <h2 style="color:#be4d4d; text-align:center; margin-bottom:26px;">Add Problem</h2>
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        <div class="form-fields">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" style="
+            display:block;
+            width:100%;
+            margin-top:24px;
+            background:#be4d4d;
+            color:#fff;
+            font-weight:600;
+            font-size:1.08em;
+            padding:13px 0;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+            transition:background 0.2s;
+            box-shadow: 0 1px 4px #e5b2b2;
+            letter-spacing:1px;
+        ">
+            ADD PROBLEM
+        </button>
+    </form>
+</div>
+
+<style>
+.form-fields input,
+.form-fields textarea,
+.form-fields select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+.form-fields p {
+    margin-bottom: 18px;
+}
+</style>
+{% endblock %}
