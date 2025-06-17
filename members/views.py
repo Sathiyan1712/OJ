@@ -37,7 +37,7 @@ def Register(request):
             
             
             messages.success(request, f'{user_type.capitalize()} registered successfully!')
-            return redirect('/members/')
+            return redirect('/login')
     
     return render(request,'register.html')
 
