@@ -4,8 +4,8 @@ from submit.models import CodeSubmit
 
 LANGUAGECHOICE= [
     ('cpp','C++'),
-    ('py','PYTHON'),
-    ('c', 'C')
+    
+    
 ]
 
 class submitform (forms.ModelForm):

@@ -1,0 +1,1 @@
+Unexpected Error: write() argument must be str, not builtin_function_or_method

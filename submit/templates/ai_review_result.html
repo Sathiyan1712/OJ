@@ -22,23 +22,26 @@
         font-size: 1.07em;
         overflow-x: auto;
         box-shadow: 0 1px 6px #e9e9e9;
-    "><code>{{ submission.code }}</code></pre>
+    "><code class="language-cpp">{{ submission.code|escape }}</code></pre>
+
 
     <hr style="margin:32px 0 24px 0;">
 
     <h2 style="margin-bottom:12px;">AI's Review:</h2>
     <div style="
-        background:#f7f7f7;
-        border-radius:8px;
-        padding: 18px 16px;
-        box-shadow: 0 1px 4px #eee;
-        font-size:1.05em;
-        color:#222;
-        margin-bottom: 32px;
-        white-space: pre-wrap;
-    ">
-        {{ ai_review }}
-    </div>
+    background:#f7f7f7;
+    border-radius:8px;
+    padding: 18px 16px;
+    box-shadow: 0 1px 4px #eee;
+    font-size:1.05em;
+    color:#222;
+    margin-bottom: 32px;
+    white-space: pre-wrap;
+    font-family: 'Courier New', monospace;
+">
+    {{ ai_review|escape }}
+</div>
+
 
     <div style="display:flex; gap:18px; justify-content:center;">
         <a href="{% if problem %}{% url 'code submit' problem.id %}{% else %}{% url 'submit_empty' %}{% endif %}" style="

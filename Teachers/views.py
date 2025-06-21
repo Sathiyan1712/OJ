@@ -52,6 +52,11 @@ def add_problem(request):
         if form.is_valid():
             problem = form.save(commit=False)
             problem.created_by= (request.user)
+            import re
+            if problem.example:
+                
+                problem.example = re.sub(r"(Example\d+:)", r"\n\1", problem.example)
+            problem.created_by= (request.user)
             problem.save()
 
             project_path = Path(settings.BASE_DIR)

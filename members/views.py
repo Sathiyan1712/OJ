@@ -61,20 +61,19 @@ def Login(request):
     if request.method== 'POST':
         username=request.POST.get('username')
         password=request.POST.get('password')
-        selected_type = request.POST.get('user_type')
+        
         user = authenticate(request, username=username, password=password)
-        if user is not None:
-            if hasattr(user,'profile') and user.profile.user_type==selected_type:
-                login (request, user)
-                messages.success(request, f"Logged in as {selected_type}")
-                if selected_type=='student':
-                    return redirect('/Students')
-                else:
-                    return redirect('/Teachers/teacher-dashboard')
+        if user is not None and hasattr(user, 'profile'):
+            login(request, user)
+            user_type = user.profile.user_type
+            messages.success(request, f"Logged in as {user_type}")
+            if user_type == 'student':
+                return redirect('/Students')
             else:
-                messages.error(request, "Invalid user type.")
-        else: 
-            messages.error(request, "Invalid credential")
+                return redirect('/Teachers/teacher-dashboard')
+        else:
+            messages.error(request, "Invalid credentials.")
+
 
     return render(request, 'login.html')
 

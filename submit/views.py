@@ -13,6 +13,10 @@ from django.conf import settings
 # ...
 genai.configure(api_key=settings.GEMINI_API_KEY)
 
+import markdown
+from django.utils.safestring import mark_safe
+
+
 
 
 # genai.configure(api_key=os.environ.get("GEMINI_API_KEY", "YOUR_GEMINI_API_KEY"))
@@ -208,16 +212,16 @@ def running_code(language, code, input_data):
 
 
 
+
+
 @login_required
 def ai_review_code(request, submission_id):
     genai.configure(api_key=os.environ.get('GOOGLE_API_KEY'))
     submission = get_object_or_404(CodeSubmit, pk=submission_id, user=request.user)
 
-    # Fetch the problem details for context
     problem = submission.problem
     problem_statement = problem.description if problem else "No problem statement available."
 
-    # Prepare the prompt for Gemini
     prompt = f"""
     You are an AI code reviewer for an online judge.
     The user submitted the following code to solve a problem.
@@ -256,23 +260,23 @@ def ai_review_code(request, submission_id):
     Provide an improved version of the code if possible, clearly indicating the changes and why they are improvements.
     If the code is already perfect, explain why.
     """
-    
-    ai_response_text = ""
+
+
+
     try:
         model = genai.GenerativeModel('gemini-1.5-flash-latest')
         response = model.generate_content(prompt)
+        extensions = ['fenced_code', 'codehilite']
         ai_response_text = response.text
+        html_review = mark_safe(markdown.markdown(ai_response_text, extensions=extensions, output_format='html5'))  # Convert only after successful response
     except Exception as e:
-        ai_response_text = f"An error occurred while generating AI review: {e}"
+        html_review = f"An error occurred while generating AI review: {e}"
 
-    if request.user.profile.user_type == "teacher":
-        base_template = "base.html"
-    else:
-        base_template = "base1.html"
+    base_template = "base.html" if request.user.profile.user_type == "teacher" else "base1.html"
 
     return render(request, 'ai_review_result.html', {
         'submission': submission,
-        'ai_review': ai_response_text,
+        'ai_review': html_review,
         'base_template': base_template,
         'problem': problem
     })
